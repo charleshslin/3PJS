@@ -1,3 +1,6 @@
 #!/usr/bin/env python3.8
+import urllib.request
 
-domain = input("Provide domain to scan: ")
+URL = input("Provide URL to scan: ")
+html = urllib.request.urlopen("http://" + URL).read()
+print(html)
