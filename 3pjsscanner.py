@@ -19,7 +19,7 @@ scripts = soup.find_all('script')
 
 for link in scripts:
 	if 'src' in link.attrs:
-		if link['src'] == "/" or URL in link['src']:
+		if (link['src'][0] == "/" and link['src'][1] != "/") or URL in link['src']:
 			srcs_selfhost.append(link['src'])
 		elif 'integrity' in link.attrs:
 			srcs_3p.append([link['src'], "yes"])
