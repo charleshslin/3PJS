@@ -8,7 +8,7 @@ srcs_3p = []
 violations = 0
 
 #User input
-URL = input("Provide URL to scan: ")
+URL = input("Provide URL to scan (without http://, https://, www.): ")
 
 #Scan website
 html = urllib.request.urlopen("http://" + URL).read()
@@ -19,7 +19,7 @@ scripts = soup.find_all('script')
 
 for link in scripts:
 	if 'src' in link.attrs:
-		if link['src'][0] == "/":
+		if link['src'] == "/" or URL in link['src']:
 			srcs_selfhost.append(link['src'])
 		elif 'integrity' in link.attrs:
 			srcs_3p.append([link['src'], "yes"])
