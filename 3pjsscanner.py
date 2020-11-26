@@ -8,10 +8,10 @@ srcs_3p = []
 violations = 0
 
 #User input
-URL = input("Provide URL to scan: ")
+URL = input("Provide URL to scan (without http://, https://, www.): ")
 
 #Scan website
-html = urllib.request.urlopen(URL).read()
+html = urllib.request.urlopen("http://" + URL).read()
 soup = bs4.BeautifulSoup(html, features='html.parser')
 
 #Scripts
